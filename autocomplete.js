@@ -23,9 +23,6 @@ const displaySug = (sugRes) => {
 			.join("");
 		suggestions.innerHTML = sugHtml;
 	}
-	if (sugQuery.value.length === 0) {
-		suggestions.innerHTML = "";
-	}
 };
 
 const querySug = () => {
@@ -38,7 +35,9 @@ const querySug = () => {
 			const sugResponse = await fetch(url);
 			const sugjsonResponse = await sugResponse.json();
 			displaySug(sugjsonResponse);
-			console.log(sugjsonResponse);
+			//console.log(sugjsonResponse);
+		} else {
+			suggestions.innerHTML = "";
 		}
 	}, 500);
 };
