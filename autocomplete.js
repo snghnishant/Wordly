@@ -5,7 +5,7 @@ const sugQuery = document.getElementById("query");
 const suggestions = document.getElementById("suggestions");
 
 // Debouncing variable
-let timeoutFunction;
+let debounceFunction;
 
 let mySug = (search) => {
 	return search.split(" ").join("+");
@@ -26,10 +26,10 @@ const displaySug = (sugRes) => {
 };
 
 const querySug = () => {
-	if (timeoutFunction) {
-		clearTimeout(timeoutFunction);
+	if (debounceFunction) {
+		clearTimeout(debounceFunction);
 	}
-	timeoutFunction = setTimeout(async () => {
+	debounceFunction = setTimeout(async () => {
 		if (sugQuery.value.length) {
 			let url = sugApi + sugEndpoint + mySug(sugQuery.value) + suglimit;
 			const sugResponse = await fetch(url);

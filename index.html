@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>Word Finding App</title>
-</head>
-<body>
-    
-    <header>
-        <nav>
-            <button><a href="https://github.com/snghnishant/vanillajs/tree/master/Wordly" target="_blank" title="Star us on Github">Source code</a></button>
-        </nav>
-    </header>
-    <main>
-        <h1>Wordly</h1>
-        <p id="sub-head">word finding App</p>
-        <select id="select">
-            <option>Synonyms</option>
-            <option>Antonyms</option>
-            <option>Rhymes</option>
-            <option>Words Related to</option>
-            <option>Words Sounds Like</option>
-        </select>
-        <div class="search">
-            <input autocomplete="off" type="text" id="query" placeholder="Type Something">
-            <button id="search-btn" onclick="queryResult()">Search</button>
-        </div>
-        <div class="sug-container">
-            <div id="suggestions">
-
-            </div>
-        </div>
-        <div id="results">
-        </div>
-        <script src="app.js"></script>
-        <script src="autocomplete.js"></script>
-    </main>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Word Finding App</title>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<button>
+					<a
+						href="https://github.com/snghnishant/Wordly"
+						target="_blank"
+						title="Github"
+						alt="Github link"
+						>Source code</a
+					>
+				</button>
+			</nav>
+		</header>
+		<main>
+			<h1>Wordly</h1>
+			<p id="sub-head">word finding App</p>
+			<select id="select">
+				<option>Synonyms</option>
+				<option>Antonyms</option>
+				<option>Rhymes</option>
+				<option>Words Related to</option>
+				<option>Words Sounds Like</option>
+			</select>
+			<div class="search">
+				<input
+					autocomplete="off"
+					type="text"
+					id="query"
+					placeholder="Type Something"
+				/>
+				<button id="search-btn" onclick="queryResult()">Search</button>
+			</div>
+			<div class="sug-container">
+				<div id="suggestions"></div>
+			</div>
+			<div id="results"></div>
+			<script src="app.js"></script>
+			<script src="autocomplete.js"></script>
+		</main>
+	</body>
 </html>
