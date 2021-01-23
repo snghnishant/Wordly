@@ -1,3 +1,4 @@
+// API defaults
 let api = "https://api.datamuse.com/";
 let endpoint = [
 	"words?rel_syn=",
@@ -6,15 +7,16 @@ let endpoint = [
 	"words?ml=",
 	"words?sl=",
 ];
-let responseField = document.querySelector("#results");
-let query;
 
-//querybuilder function
-let myQuery = (search) => {
-	return search.split(" ").join("+");
+let responseField = document.querySelector("#results");
+let searchQuery;
+
+// Query builder function to add '+' to build search query
+let userQuery = (searchString) => {
+	return searchString.split(" ").join("+");
 };
 
-// Formatting results to display them in results div tag
+// Formatting results to display them in results div
 const displayResponse = (res) => {
 	if (!res) {
 		console.log(res.status);
@@ -28,34 +30,35 @@ const displayResponse = (res) => {
 
 	// Creates an empty array to contain the HTML strings
 	let wordList = [];
+
 	// Loops through the response and caps off at 25
 	for (let i = 0; i < Math.min(res.length, 25); i++) {
-		wordList.push(`<li>${i + 1}. ${res[i].word}</li>`); //word is the JSON object property look Datamuse Api
+		wordList.push(`<li>${i + 1}. ${res[i].word}</li>`); //word is the JSON object property look Datamuse API
 	}
 	wordList = wordList.join("");
 
 	//styling resultField
 	responseField.innerHTML = "";
-	responseField.style.padding = "5px";
-	responseField.style.margin = "5px";
 	responseField.style.textTransform = "capitalize";
 	responseField.innerHTML = `<p>You might be interested in:</p><ul>${wordList}</ul>`;
 	return;
 };
-function index() {
+
+// Get index of selected search option
+function getIndex() {
 	return document.getElementById("select").options.selectedIndex;
 }
 
-// main calling function using fetch api to collect JSON object
-let throttleFunction;
+// Search function with API throttling enabled
+let throttleTimeout;
 
 const queryResult = () => {
-	if (throttleFunction) {
+	if (throttleTimeout) {
 		return;
 	}
-	throttleFunction = setTimeout(async () => {
-		query = document.getElementById("query").value;
-		let url = api + endpoint[index()] + myQuery(query);
+	throttleTimeout = setTimeout(async () => {
+		searchQuery = document.getElementById("query").value;
+		let url = api + endpoint[getIndex()] + userQuery(searchQuery);
 		try {
 			const response = await fetch(url);
 			if (response.ok) {
@@ -63,8 +66,8 @@ const queryResult = () => {
 				displayResponse(jsonResponse);
 			}
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 		}
-		throttleFunction = undefined;
+		throttleTimeout = undefined;
 	}, 500);
 };
