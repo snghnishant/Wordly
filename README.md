@@ -7,16 +7,15 @@ A RESTful word finding service powered by Datamuse API.
 ### Tech Stack
 
 -   HTML
--   CSS, Skeleton CSS
+-   CSS
 -   JavaScript ES6+
 
 ### Features
 
--   [] Full API integration
--   [x] Autocomplete
--   [] Find word meaning
--   [x] Responsive UI
--   [] Progressive web app
+-   Autocomplete
+-   Responsive UI
+-   Find word meaning (Soon)
+-   Progressive web app (Soon)
 
 ### Technical Details
 
