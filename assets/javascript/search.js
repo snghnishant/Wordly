@@ -53,6 +53,7 @@ function getIndex() {
 let throttleTimeout;
 
 const queryResult = () => {
+	suggestions.innerHTML = "";
 	if (throttleTimeout) {
 		return;
 	}
@@ -70,4 +71,5 @@ const queryResult = () => {
 		}
 		throttleTimeout = undefined;
 	}, 500);
+
 };

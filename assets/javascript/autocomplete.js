@@ -52,7 +52,7 @@ const querySug = () => {
 		} catch (error) {
 			console.error(error);
 		}
-	}, 500);
+	}, 300);
 };
 
 sugQuery.addEventListener("input", querySug);
